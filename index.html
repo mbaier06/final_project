@@ -9,12 +9,12 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
-<body>  
-  <div class="py-8 md:px-32 px-0 md:w-1/2 w-full mx-auto">
-    
-    <div class="flex items-center">
-      <div class="md:mx-0 mx-4"><span class="font-bold text-2xl">Insert App name</span></div>
-      <img class="rounded-xl border-2" src="https://rlv.zcache.com/your_logo_goes_here_classic_round_sticker-r878fc673c17f482d888ac86393b97d52_0ugmp_8byvr_704.jpg">
+<body class = "p-4 bg-gray-100">  
+  <div>
+  <!-- Can't get app name and logo in same line so looks kind of clunky-->
+    <img class="rounded-xl border-2" src="https://rlv.zcache.com/your_logo_goes_here_classic_round_sticker-r878fc673c17f482d888ac86393b97d52_0ugmp_8byvr_704.jpg" width="100" height = "100">
+    <div class="text-center text-green-700 font-bold text-2xl uppercase">App Name goes here</div>
+  </div> 
       <div class="ml-auto text-sm sign-in-or-sign-out"></div>
     </div>
 
@@ -22,11 +22,12 @@
       <!-- Courses rendered from JavaScript -->
     </div>
 
-    <!-- New post form -->
-    <div>
-      <form class="w-full mt-8">
-        <input type="text" id="image-url" name="image-url" placeholder="Image URL" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-        <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Post</button>
+    <!-- New post form -- most likely needs to render from event listener and be part of js file but leaving for now
+    <div class = "m-4">
+      <h1 class = "text-2xl font-bold text-center">Which hole are you currently at?</h1>
+      <form class="w-full items-center">
+        <input type="text" id="hole-location" name="hole-location" placeholder="Hole Location" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+        <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Submit</button>
       </form>
     </div>
   </div>
