@@ -1,10 +1,10 @@
-let db = firebase.firestore()
 
 firebase.auth().onAuthStateChanged(async function(user) {
+  let db = firebase.firestore()
   if (user) {
     // Signed in
     console.log('signed in')
-  
+    
     //Ensure signed-in user is in Firestore Users collection
     db.collection('users').doc(user.uid).set({
       name: user.displayName,

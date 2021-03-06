@@ -9,13 +9,15 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
-<body class = "p-4 bg-gray-100">  
-    <div>
+<body class = "bg-gray-100">  
+    <div class="bg-green-500 rounded">
     <!-- Can't get app name and logo in same line so looks kind of clunky-->
       <img class="rounded-xl border-2" src="https://rlv.zcache.com/your_logo_goes_here_classic_round_sticker-r878fc673c17f482d888ac86393b97d52_0ugmp_8byvr_704.jpg" width="100" height = "100">
-      <div class="text-center text-green-700 font-bold text-2xl uppercase">App Name goes here</div>
-      <div class="ml-auto text-sm sign-in-or-sign-out"></div>
-    </div> 
+      <div class=" p-4 text-center text-white font-bold text-3xl uppercase">App Name</div>
+    </div>
+    <div>
+      <div class="ml-auto text-sm p-4 sign-in-or-sign-out"></div>
+    </div>
 
     <div class="course">
       <!-- Courses rendered from JavaScript -->
@@ -35,6 +37,7 @@
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
   <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
 
