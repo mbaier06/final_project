@@ -24,7 +24,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Get request to pull golf course data from back-end
     let response = await fetch('/.netlify/functions/get_course')
     let courses = await response.json()
-    console.log(course)
+    console.log(courses)
 
     for (let i=0; i<courses.length; i++) {
       let course = courses[i]

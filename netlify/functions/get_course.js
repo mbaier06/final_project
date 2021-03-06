@@ -10,14 +10,14 @@ exports.handler = async function(event) {
   // loop through course docs
   for (i=0; i < courses.length; i++) {
     let courseId = courses[i].id
-    let courseData = courses[i].data()
-    console.log(courseData)
+    let course = courses[i].data()
+    console.log(course)
 
     //adds new object to courseData array
     courseData.push({
       id: courseId,
-      name: courseData.name,
-      imageUrl: courseData.imageUrl
+      name: course.name,
+      imageUrl: course.imageUrl
     })
   }
   return {
