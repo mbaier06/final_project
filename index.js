@@ -109,6 +109,6 @@ async function renderCourse(courseId, courseName, courseImage) {
       let courseButton = courseButtons[j]
       courseButton.classList.remove('outline-black', 'bg-green-600')
     }
-    document.querySelector(`.course-${courseId}`).classList.add('outline-black', 'bg-green-600')
+    document.querySelector(`.course-${courseId} .course-button`).classList.add('outline-black', 'bg-green-600')
   })
 }
