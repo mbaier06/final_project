@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     console.log('signed in')
 
     //Hides Form function until user selects a course below -- not working properly
-    document.querySelector('form').classList.add('hidden')
+    // document.querySelector('form').classList.add('hidden')
     
     //Ensure signed-in user is in Firestore Users collection
     db.collection('users').doc(user.uid).set({
@@ -118,6 +118,7 @@ async function renderCourse(courseId, courseName, courseImage) {
     }
     document.querySelector(`.course-${courseId} .course-button`).classList.add('outline-black', 'bg-green-600')
   })
+
   // Renders form once user selects course
   // renderForm(form)
 }
