@@ -30,7 +30,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
     //render courses on page using render course function written at bottom of this page
     for (let i=0; i<courses.length; i++) {
       let course = courses[i]
-      renderCourse(course.name, course.imageUrl)
+      let courseId = course.id
+      let courseName = course.name
+      let courseImage = course.imageUrl
+      renderCourse(courseId, courseName, courseImage)
     }
 
     // Listen for form submit and create new request
@@ -46,7 +49,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         userId: user.uid,
         requestorName: requestUser,
         courseName: requestCourse,
-        holeNumner: requestHole
+        holeNumber: requestHole
       })
 
     })
@@ -69,6 +72,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Signed out
     console.log('signed out')
 
+    // Hide the form when signed-out
+    document.querySelector('form').classList.add('hidden')
+
     // Initializes FirebaseUI Auth
     let ui = new firebaseui.auth.AuthUI(firebase.auth())
 
@@ -85,18 +91,24 @@ firebase.auth().onAuthStateChanged(async function(user) {
   }
 })
 
-// render cousres function to be called above
-async function renderCourse(courseName, courseImage) {
+// render courses function to be called above
+async function renderCourse(courseId, courseName, courseImage) {
   document.querySelector('.course').insertAdjacentHTML('beforeend', `
-    <div class="${courseName} md:w-1/3 p-6">
+    <div class="course-${courseId} md:w-1/3 p-6">
       <image src="${courseImage}" class="w-full rounded-lg">
-      <a href="#" class="course-button block mx-auto font-bold text-xl bg-green-600 my-4 text-center rounded">${courseName}</a>
+      <a href="#" class="course-button block mx-auto font-bold text-xl bg-green-300 my-4 text-center rounded">${courseName}</a>
     </div>
   `)
+   document.querySelector(`.course-${courseId} .course-button`).addEventListener('click', async function(event) {
+    event.preventDefault()
+    console.log(`${courseName} was clicked!`)
+    courseButtons = document.querySelectorAll(`.course-button`)
+    // console.log(courseButtons.length)
+    document.querySelectorAll(`.course-button`).remove('outline-black', 'bg-green-600')
+    // for (j = 0; j < courseButtons.length; j++) {
+    //   courseButton = courseButtons[j]
+    //   courseButton.classList.remove('outline-black', 'bg-green-600')
+    // }
+    document.querySelector(`.course-${courseId}`).classList.add('outline-black', 'bg-green-600')
+  })
 }
-
-  // event listner for course selection to highlight the clicked course - Could not figure out not to implement this code
-  // document.querySelector(`.${courseName} .course-button`).addEventListener('click', async function(event) {
-  //   event.preventDefault()
-  //   document.querySelector(`.${courseName} .course-button`).classList.add('outline-black')
-  // })
