@@ -25,15 +25,44 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let response = await fetch('/.netlify/functions/get_course')
     let courses = await response.json()
     console.log(courses)
-
+    
+    //render courses on page using render course function written at bottom of this page
     for (let i=0; i<courses.length; i++) {
       let course = courses[i]
-      let courseId = course.id
-      let courseName = course.name 
-      let courseImage = course.imageUrl
+      renderCourse(course.name, course.imageUrl)
+    }
+
+    // Listen for form submit and create new request
+  document.querySelector('form').addEventListener('submit', async function (event) {
+    event.preventDefault()
+    let requestUser = user.displayName
+    let requestCourse = document.querySelector('.course-name').value 
+    let requestHole = document.querySelector('.hole-number').value
+
+    let response = await fetch('/.netlify/functions/create_request', {
+      method: 'POST',
+      body: JSON.stringify({
+        userId: user.uid,
+        requestorName: requestUser,
+        courseName: requestCourse,
+        holeNumner: requestHole
+      })
+
+    })
+    console.log(response)
+    console.log(requestUser)
+    console.log(requestCourse)
+    console.log(requestHole)
+  })
+    
+    // for (let i=0; i<courses.length; i++) {
+    //   let course = courses[i]
+    //   let courseId = course.id
+    //   let courseName = course.name 
+    //   let courseImage = course.imageUrl
 
       //render golf course name and image below
-    }
+    // }
   
   } else {
     // Signed out
@@ -54,3 +83,22 @@ firebase.auth().onAuthStateChanged(async function(user) {
     ui.start('.sign-in-or-sign-out', authUIConfig)
   }
 })
+
+
+
+
+// render cousres function to be called above
+async function renderCourse(courseName, courseImage) {
+  document.querySelector('.course').insertAdjacentHTML('beforeend', `
+    <div class="${courseName} md:w-1/3 p-6">
+      <image src="${courseImage}" class="w-full rounded-lg">
+      <a href="#" class="course-button block mx-auto font-bold text-xl bg-green-600 my-4 text-center rounded">${courseName}</a>
+    </div>
+  `)
+}
+
+  // event listner for course selection to highlight the clicked course - Could not figure out not to implement this code
+  // document.querySelector(`.${courseName} .course-button`).addEventListener('click', async function(event) {
+  //   event.preventDefault()
+  //   document.querySelector(`.${courseName} .course-button`).classList.add('outline-black')
+  // })
