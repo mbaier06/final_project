@@ -102,13 +102,13 @@ async function renderCourse(courseId, courseName, courseImage) {
    document.querySelector(`.course-${courseId} .course-button`).addEventListener('click', async function(event) {
     event.preventDefault()
     console.log(`${courseName} was clicked!`)
-    courseButtons = document.querySelectorAll(`.course-button`)
-    // console.log(courseButtons.length)
-    document.querySelectorAll(`.course-button`).remove('outline-black', 'bg-green-600')
-    // for (j = 0; j < courseButtons.length; j++) {
-    //   courseButton = courseButtons[j]
-    //   courseButton.classList.remove('outline-black', 'bg-green-600')
-    // }
+    let courseButtons = document.querySelectorAll(`.course-button`)
+    console.log(courseButtons.length)
+    // document.querySelectorAll(`.course-button`).remove('outline-black', 'bg-green-600')
+    for (j = 0; j < courseButtons.length; j++) {
+      let courseButton = courseButtons[j]
+      courseButton.classList.remove('outline-black', 'bg-green-600')
+    }
     document.querySelector(`.course-${courseId}`).classList.add('outline-black', 'bg-green-600')
   })
 }
