@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+</head>
+
+<body class = "bg-gray-100">  
+    <div class="p-4 bg-green-500 items-center rounded">
+    <!-- Can't get app name centered in page for some reason-->
+      <img class="rounded-xl inline-block border-2" src="https://rlv.zcache.com/your_logo_goes_here_classic_round_sticker-r878fc673c17f482d888ac86393b97d52_0ugmp_8byvr_704.jpg" width="100" height = "100">
+      <div class="text-center inline-block text-white font-bold text-3xl uppercase">App Name</div>
+    </div>
+    <div>
+      <div class="ml-auto text-sm p-4 sign-in-or-sign-out text-right"></div>
+    </div>
+
+    <!--Additional HTML goes here (Noober HW 5 is a good reference point for this HTML)-->
+ 
+  <!-- Put the Firebase config here -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+    apiKey: "AIzaSyAFCiXyrXlfEXdE5iyvX-EnTfhh17luzZs",
+    authDomain: "kiei-final-proj.firebaseapp.com",
+    projectId: "kiei-final-proj",
+    storageBucket: "kiei-final-proj.appspot.com",
+    messagingSenderId: "675527405123",
+    appId: "1:675527405123:web:1257908b74715937cfeef6"
+  } // replace
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="index.js"></script>
+</body>
+
+</html>
