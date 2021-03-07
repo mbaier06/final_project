@@ -13,6 +13,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
     //Sign out Button
     document.querySelector('.sign-in-or-sign-out').innerHTML = `
+    <div class="font-bold text-green-500 text-base">Signed in as ${user.displayName}</div>
     <button class="text-green-500 underline sign-out">Sign Out</button>
     `
     document.querySelector('.sign-out').addEventListener('click', function(event) {
@@ -83,9 +84,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
     ui.start('.sign-in-or-sign-out', authUIConfig)
   }
 })
-
-
-
 
 // render cousres function to be called above
 async function renderCourse(courseName, courseImage) {
