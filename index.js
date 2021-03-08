@@ -49,8 +49,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
   document.querySelector('form').addEventListener('submit', async function (event) {
     event.preventDefault()
     let requestUser = user.displayName
-    let requestCourse = document.querySelector('.course-name').value 
-    let requestHole = document.querySelector('.hole-number').value
+    let requestCourse = document.querySelector('#course-name').value 
+    let requestHole = document.querySelector('#hole-number').value
 
     let response = await fetch('/.netlify/functions/create_request', {
       method: 'POST',

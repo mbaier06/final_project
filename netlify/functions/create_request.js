@@ -4,11 +4,13 @@ exports.handler = async function(event) {
     let db = firebase.firestore()
   
     let request = JSON.parse(event.body)
+    let userId = request.userId
     let requestUser = request.requestorName
-    let courseName = courseName
-    let holeNumber = holeNumber
+    let courseName = request.courseName
+    let holeNumber = request.holeNumber
     
     let newRequest = {
+        userId: userId,
         requestorName: requestUser,
         courseName: courseName,
         holeNumber: holeNumber,
