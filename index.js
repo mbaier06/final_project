@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       email: user.email
     })
 
-
+    //Requests Link Webpage Navigation
     document.querySelector('.request-link').innerHTML = `
       <a href="requests.html" id="requests" class="pl-6 inline-block ml-auto text-sm text-blue-500 underline p-4 text-left">Requests</a>
     `
@@ -109,18 +109,18 @@ async function renderCourse(courseId, courseName, courseImage) {
       <a href="#" class="course-button block mx-auto font-bold text-xl bg-green-300 my-2 text-center rounded">${courseName}</a>
     </div>
   `)
-   document.querySelector(`.course-${courseId} .course-button`).addEventListener('click', async function(event) {
-    event.preventDefault()
-    console.log(`${courseName} was clicked!`)
-    let courseButtons = document.querySelectorAll(`.course-button`)
-    console.log(courseButtons.length)
-    // document.querySelectorAll(`.course-button`).remove('outline-black', 'bg-green-600')
-    for (j = 0; j < courseButtons.length; j++) {
-      let courseButton = courseButtons[j]
-      courseButton.classList.remove('outline-black', 'bg-green-600')
-    }
-    document.querySelector(`.course-${courseId} .course-button`).classList.add('outline-black', 'bg-green-600')
-  })
+  //  document.querySelector(`.course-${courseId} .course-button`).addEventListener('click', async function(event) {
+  //   event.preventDefault()
+  //   console.log(`${courseName} was clicked!`)
+  //   let courseButtons = document.querySelectorAll(`.course-button`)
+  //   console.log(courseButtons.length)
+  //   // document.querySelectorAll(`.course-button`).remove('outline-black', 'bg-green-600')
+  //   for (j = 0; j < courseButtons.length; j++) {
+  //     let courseButton = courseButtons[j]
+  //     courseButton.classList.remove('outline-black', 'bg-green-600')
+  //   }
+  //   document.querySelector(`.course-${courseId} .course-button`).classList.add('outline-black', 'bg-green-600')
+  // })
 
   // Renders form once user selects course
   // renderForm(form)
