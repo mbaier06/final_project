@@ -6,6 +6,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
     console.log('signed in')
     
   
+    document.querySelector('.home-link').innerHTML = `
+      <a href="index.html" id="index" class="pl-6 inline-block ml-auto text-sm text-blue-500 underline p-4 text-left">Home</a>
+    `
+
     //Sign out Button
     document.querySelector('.sign-in-or-sign-out').innerHTML = `
     <button class="text-green-500 underline sign-out">Sign Out</button>
@@ -16,6 +20,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = 'index.html'
     })
 
+    let response = await fetch('/.netlify/functions/get_requests')
+    let requests = await response.json()
+    for (let i=0; i < request.length; i++) {
+      let request = requests[i]
+      renderRequest(request.requestorName, request.courseName, request.holeNumber, request.requestTime)
+    }
   
   } else {
     // Signed out
@@ -41,11 +51,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
 // render cousres function to be called above
-async function renderCourse(courseName, courseImage) {
-  document.querySelector('.course').insertAdjacentHTML('beforeend', `
-    <div class="${courseName} md:w-1/3 p-6">
-      <image src="${courseImage}" class="w-full rounded-lg">
-      <a href="#" class="course-button block mx-auto font-bold text-xl bg-green-600 my-4 text-center rounded">${courseName}</a>
+async function renderRequest(requestorName, courseName, holeNumber, requestTime) {
+  document.querySelector('.requests').insertAdjacentHTML('beforeend', `
+    <div class="border-4 p-4 my-4 text-left">
+      <h2 class="text-2xl py-1>${requestorName}</h2>
+      <p class="text-lg">${courseName}</p>
+      <p class="text-lg>Hole ${holeNumber}</p>
+      <p>Request time ${requestTime}</p>
     </div>
   `)
 }

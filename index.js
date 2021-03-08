@@ -15,7 +15,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
     })
 
 
-  
+    document.querySelector('.request-link').innerHTML = `
+      <a href="requests.html" id="requests" class="pl-6 inline-block ml-auto text-sm text-blue-500 underline p-4 text-left">Requests</a>
+    `
+
     //Sign out Button
     document.querySelector('.sign-in-or-sign-out').innerHTML = `
     <div class="font-bold text-green-500 text-base">Signed in as ${user.displayName}</div>
