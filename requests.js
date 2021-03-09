@@ -26,7 +26,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
     //Get Request filter
     let requestResponse = await fetch('/.netlify/functions/get_requests')
     let requests = await requestResponse.json()
-    for (let i=0; i < request.length; i++) {
+    console.log(requests)
+    for (let i=0; i < requests.length; i++) {
       let request = requests[i]
       renderRequest(request.requestorName, request.courseName, request.holeNumber, request.requestTime)
     }
