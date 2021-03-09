@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     //Ensures filter button selected looks "active"
     filterActive()
 
-
+    //Get Request filter
     let requestResponse = await fetch('/.netlify/functions/get_requests')
     let requests = await requestResponse.json()
     for (let i=0; i < request.length; i++) {
