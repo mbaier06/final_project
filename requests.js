@@ -52,13 +52,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
   }
 })
 
-
-//render course name function for filter buttons
-// async function renderCourseName(courseId, courseName) {
-//   document.querySelector('.filters').insertAdjacentHTML('beforeend', `
-//     <div class="text-center"><a href="#" id="${courseId}-course-filter" class="filter-button inline-block border-2 border-green-500 rounded px-4 py-2">${courseName}</a>
-//   `)}
-
   async function filterActive() {
     let allFilters = document.querySelectorAll('.filter-button')
     let allRequestsFilter = document.querySelector('#all-filter')
