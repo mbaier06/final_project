@@ -20,33 +20,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = 'index.html'
     })
 
-    // Get request to pull golf coursename from back-end to populate the non-All & User-specific filter buttons
-    let response = await fetch('/.netlify/functions/get_course')
-    let courses = await response.json()
-    console.log(courses)
-    
-    //render course names on filter buttons on page using renderCourseName function written at bottom of this page
-    for (let i=0; i<courses.length; i++) {
-      let course = courses[i]
-      // let courseId = course.id
-      let courseName = course.name
-      // let courseImage = course.imageUrl
-      renderCourseName(courseName)
-    }
+    //Ensures filter button selected looks "active"
+    filterActive()
 
-    //Making selected filter button "active"
-    document.querySelector(`.filters .filter-button`).addEventListener('click', async function(event) {
-      event.preventDefault()
-      console.log(`${courseName} was clicked!`)
-      let courseButtons = document.querySelectorAll(`.course-button`)
-      console.log(courseButtons.length)
-      // document.querySelectorAll(`.course-button`).remove('outline-black', 'bg-green-600')
-      for (j = 0; j < courseButtons.length; j++) {
-        let courseButton = courseButtons[j]
-        courseButton.classList.remove('outline-black', 'bg-green-600')
-      }
-      document.querySelector(`.course-${courseId} .course-button`).classList.add('outline-black', 'bg-green-600')
-    })
 
     let requestResponse = await fetch('/.netlify/functions/get_requests')
     let requests = await requestResponse.json()
@@ -77,12 +53,67 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
 //render course name function for filter buttons
-async function renderCourseName(courseName) {
-  document.querySelector('.filters').insertAdjacentHTML('beforeend', `
-    <div class="text-center"><a href="#" id="course-filter" class="filter-button inline-block border-2 border-green-500 rounded px-4 py-2">${courseName}</a>
-  `)}
+// async function renderCourseName(courseId, courseName) {
+//   document.querySelector('.filters').insertAdjacentHTML('beforeend', `
+//     <div class="text-center"><a href="#" id="${courseId}-course-filter" class="filter-button inline-block border-2 border-green-500 rounded px-4 py-2">${courseName}</a>
+//   `)}
 
-// render cousres function to be called above
+  async function filterActive() {
+    let allFilters = document.querySelectorAll('.filter-button')
+    let allRequestsFilter = document.querySelector('#all-filter')
+    let userFilter = document.querySelector('#user-specific-filter')
+    let augustaFilter = document.querySelector('#augusta-national-filter')
+    let pebbleFilter = document.querySelector('#pebble-beach-filter')
+    let pineFilter = document.querySelector('#pine-valley-filter')
+    
+    allRequestsFilter.addEventListener('click', async function(event){
+      event.preventDefault()
+      console.log('All requests filter was clicked!')
+      for (i=0; i < allFilters.length; i++) {
+      let allFilter = allFilters[i]
+      allFilter.classList.remove('bg-gray-500')
+      }
+      allRequestsFilter.classList.add('bg-gray-500')
+    })
+    userFilter.addEventListener('click', async function(event){
+      event.preventDefault()
+      console.log('User specific filter was clicked!')
+      for (i=0; i < allFilters.length; i++) {
+      let allFilter = allFilters[i]
+      allFilter.classList.remove('bg-gray-500')
+      }
+      userFilter.classList.add('bg-gray-500')
+    })
+    augustaFilter.addEventListener('click', async function(event){
+      event.preventDefault()
+      console.log(`Augusta National filter was clicked`)
+      for (i=0; i < allFilters.length; i++) {
+      let allFilter = allFilters[i]
+      allFilter.classList.remove('bg-gray-500')
+      }
+      augustaFilter.classList.add('bg-gray-500')
+    })
+    pebbleFilter.addEventListener('click', async function(event){
+      event.preventDefault()
+      console.log(`Pebble Beach filter was clicked`)
+      for (i=0; i < allFilters.length; i++) {
+      let allFilter = allFilters[i]
+      allFilter.classList.remove('bg-gray-500')
+      }
+      pebbleFilter.classList.add('bg-gray-500')
+    })
+    pineFilter.addEventListener('click', async function(event){
+      event.preventDefault()
+      console.log(`Pine Valley filter was clicked`)
+      for (i=0; i < allFilters.length; i++) {
+      let allFilter = allFilters[i]
+      allFilter.classList.remove('bg-gray-500')
+      }
+      pineFilter.classList.add('bg-gray-500')
+    })
+  }
+
+// render courses function to be called above
 async function renderRequest(requestorName, courseName, holeNumber, requestTime) {
   document.querySelector('.requests').insertAdjacentHTML('beforeend', `
     <div class="border-4 p-4 my-4 text-left">
