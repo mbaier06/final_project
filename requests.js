@@ -53,7 +53,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     ui.start('.sign-in-or-sign-out', authUIConfig)
   }
 })
-
+  //filter active function which also calls user request arrays via renderRequest function & filtering logic
   async function filterActive() {
     let allFilters = document.querySelectorAll('.filter-button')
     let allRequestsFilter = document.querySelector('#all-filter')
@@ -68,8 +68,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
       console.log('All requests filter was clicked!')
       for (i=0; i < allFilters.length; i++) {
       let allFilter = allFilters[i]
+      //Ensures dark/active background is removed from all buttons
       allFilter.classList.remove('bg-gray-500')
       }
+      //adds dark/active background to only the selected filter button
       allRequestsFilter.classList.add('bg-gray-500')
 
       let requestResponse = await fetch(`/.netlify/functions/get_requests`)
@@ -77,7 +79,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
       console.log(requests)
       for (let i=0; i < requests.length; i++) {
         let request = requests[i]
-        renderRequest(request.requestorName, request.courseName, request.holeNumber, request.requestTime)
+      //Convert firestore timestamp to date
+      let fireBaseTime = new Date(request.requestTime.seconds*1000 + request.requestTime.nanoseconds/1000000)
+      let date = fireBaseTime.toDateString()
+      let atTime = fireBaseTime.toLocaleTimeString()
+      let requestDate = `${date} at ${atTime}`
+      renderRequest(request.requestorName, request.courseName, request.holeNumber, requestDate)
         
       }
     })
@@ -97,9 +104,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let userArray = []
       for (let i=0; i < requests.length; i++) {
         let request = requests[i]
-        let user = request.requestorName
-        if (user == firebase.auth().currentUser.displayName) {
+        let user = request.userId
+        if (user == firebase.auth().currentUser.uid) {
           userArray.push(request)
+          // console.log(userArray)
         }       
       }
 
@@ -127,7 +135,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       for (let i=0; i < requests.length; i++) {
         let request = requests[i]
         let course = request.courseName
-        if (course== 'Augusta National') {
+        if (course == 'Augusta National') {
           augustaArray.push(request)
         }
       }
@@ -195,15 +203,16 @@ firebase.auth().onAuthStateChanged(async function(user) {
   }
  
 // render courses function to be called above
-async function renderRequest(requestorName, courseName, holeNumber, requestTime) {
+async function renderRequest(requestorName, courseName, holeNumber, requestDate) {
   document.querySelector('.requests').insertAdjacentHTML('beforeend', `
     <div class="border-4 p-4 my-4 text-left">
       <h2 class="text-2xl py-1">${requestorName}</h2>
       <p class="text-lg">${courseName}</p>
       <p class="text-lg">Hole ${holeNumber}</p>
-      <p class="text-md">${requestTime}</p>
+      <p class="text-md">${requestDate}</p>
     </div>
   `)
 }
+
 
   
