@@ -79,13 +79,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
       console.log(requests)
       for (let i=0; i < requests.length; i++) {
         let request = requests[i]
-      //Convert firestore timestamp to date
-      let fireBaseTime = new Date(request.requestTime.seconds*1000 + request.requestTime.nanoseconds/1000000)
-      let date = fireBaseTime.toDateString()
-      let atTime = fireBaseTime.toLocaleTimeString()
-      let requestDate = `${date} at ${atTime}`
-      renderRequest(request.requestorName, request.courseName, request.holeNumber, requestDate)
-        
+        // Convert firestore timestamp to date
+        let fireBaseTime = new Date(request.requestTime.seconds*1000 + request.requestTime.nanoseconds/1000000)
+        let date = fireBaseTime.toDateString()
+        let atTime = fireBaseTime.toLocaleTimeString()
+        let requestDate = `${date} at ${atTime}`
+        renderRequest(request.requestorName, request.courseName, request.holeNumber, requestDate)
       }
     })
     userFilter.addEventListener('click', async function(event){
@@ -107,16 +106,22 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let user = request.userId
         if (user == firebase.auth().currentUser.uid) {
           userArray.push(request)
-          // console.log(userArray)
-        }       
+          // console.log(userArray)    
       }
 
       for (a=0; a<userArray.length; a++) {
         let selectedUser = userArray[a]
-
-        renderRequest(selectedUser.requestorName, selectedUser.courseName, selectedUser.holeNumber, selectedUser.requestTime)
+        console.log(selectedUser)
+          // Convert firestore timestamp to date
+          let fireBaseTime = new Date(selectedUser.requestTime.seconds*1000 + selectedUser.requestTime.nanoseconds/1000000)
+          let date = fireBaseTime.toDateString()
+          let atTime = fireBaseTime.toLocaleTimeString()
+          let requestDate = `${date} at ${atTime}`
+          console.log(requestDate)
+           
+        renderRequest(selectedUser.requestorName, selectedUser.courseName, selectedUser.holeNumber, requestDate)
       }
-
+      }
     })
     augustaFilter.addEventListener('click', async function(event){
       event.preventDefault()
@@ -214,5 +219,17 @@ async function renderRequest(requestorName, courseName, holeNumber, requestDate)
   `)
 }
 
-
-  
+// //render Date & Time of golfer request
+// let renderDate = async function (request.requestTime.seconds, request.requestTime) {
+//   let requestResponse = await fetch(`/.netlify/functions/get_requests`)
+//   let requests = await requestResponse.json()
+//   // console.log(requests)
+//   for (let i=0; i < requests.length; i++) {
+//     let request = requests[i]
+//   //Convert firestore timestamp to date
+//   let fireBaseTime = new Date(request.requestTime.seconds*1000 + request.requestTime.nanoseconds/1000000)
+//   let date = fireBaseTime.toDateString()
+//   let atTime = fireBaseTime.toLocaleTimeString()
+//   return `${date} at ${atTime}`
+//   }
+// }
