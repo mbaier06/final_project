@@ -106,10 +106,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let user = request.userId
         if (user == firebase.auth().currentUser.uid) {
           userArray.push(request)
-          // console.log(userArray)    
+        }
       }
-
-      for (a=0; a<userArray.length; a++) {
+      console.log(userArray) 
+      for (let a=0; a<userArray.length; a++) {
         let selectedUser = userArray[a]
         console.log(selectedUser)
           // Convert firestore timestamp to date
@@ -121,7 +121,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
            
         renderRequest(selectedUser.requestorName, selectedUser.courseName, selectedUser.holeNumber, requestDate)
       }
-      }
+      
     })
     augustaFilter.addEventListener('click', async function(event){
       event.preventDefault()
@@ -144,11 +144,16 @@ firebase.auth().onAuthStateChanged(async function(user) {
           augustaArray.push(request)
         }
       }
-      for (a=0; a<augustaArray.length; a++) {
+      for (let a=0; a<augustaArray.length; a++) {
         let selectedCourse = augustaArray[a]
+         // Convert firestore timestamp to date
+         let fireBaseTime = new Date(selectedCourse.requestTime.seconds*1000 + selectedCourse.requestTime.nanoseconds/1000000)
+         let date = fireBaseTime.toDateString()
+         let atTime = fireBaseTime.toLocaleTimeString()
+         let requestDate = `${date} at ${atTime}`
       
-      console.log(augustaArray)
-      renderRequest(selectedCourse.requestorName, selectedCourse.courseName, selectedCourse.holeNumber, selectedCourse.requestTime)
+        console.log(augustaArray)
+        renderRequest(selectedCourse.requestorName, selectedCourse.courseName, selectedCourse.holeNumber, requestDate)
       }
     })
     pebbleFilter.addEventListener('click', async function(event){
@@ -172,10 +177,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
           pebbleArray.push(request)
         }
       }
-      for (a=0; a<pebbleArray.length; a++) {
+      for (let a=0; a<pebbleArray.length; a++) {
         let selectedCourse = pebbleArray[a]
+         // Convert firestore timestamp to date
+         let fireBaseTime = new Date(selectedCourse.requestTime.seconds*1000 + selectedCourse.requestTime.nanoseconds/1000000)
+         let date = fireBaseTime.toDateString()
+         let atTime = fireBaseTime.toLocaleTimeString()
+         let requestDate = `${date} at ${atTime}`
       
-        renderRequest(selectedCourse.requestorName, selectedCourse.courseName, selectedCourse.holeNumber, selectedCourse.requestTime)
+        renderRequest(selectedCourse.requestorName, selectedCourse.courseName, selectedCourse.holeNumber, requestDate)
       }
     })
     pineFilter.addEventListener('click', async function(event){
@@ -199,10 +209,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
           pineArray.push(request)
         }
       }
-      for (a=0; a<pineArray.length; a++) {
+      for (let a=0; a<pineArray.length; a++) {
         let selectedCourse = pineArray[a]
+         // Convert firestore timestamp to date
+         let fireBaseTime = new Date(selectedCourse.requestTime.seconds*1000 + selectedCourse.requestTime.nanoseconds/1000000)
+         let date = fireBaseTime.toDateString()
+         let atTime = fireBaseTime.toLocaleTimeString()
+         let requestDate = `${date} at ${atTime}`
       
-        renderRequest(selectedCourse.requestorName, selectedCourse.courseName, selectedCourse.holeNumber, selectedCourse.requestTime)
+        renderRequest(selectedCourse.requestorName, selectedCourse.courseName, selectedCourse.holeNumber, requestDate)
       }
     })
   }
