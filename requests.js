@@ -226,7 +226,7 @@ async function renderRequest(requestId, requestorName, courseName, holeNumber, r
       <p class="text-lg">Hole ${holeNumber}</p>
       <p class="text-md">${requestDate}</p>
       <p class="text-md inline">Fulfilled?</p>
-      <a href = "#" class="fulfilled inline p-1 bg-green-400 text-white">😕</a>
+      <a href = "#" class="fulfilled inline p-1 bg-green-400">😕</a>
     </div>
   `)
 }
@@ -235,13 +235,13 @@ async function fulfillRequest(requestId) {
   document.querySelector(`.request-${requestId} .fulfilled`).addEventListener('click', async function(event){
     event.preventDefault
     document.querySelector('.fulfilled').innerHTML = `
-    <a href = "#" class="fulfilled inline p-1 text-sm bg-green-400 text-white">😄</a>
+    <a href = "#" class="fulfilled inline p-1 bg-green-400">😄</a>
     `
     //make fetch POST request to backend to delete a fulfilled golfer request
     await fetch('/.netlify/functions/fulfill_request', {
     method: 'POST',
       body: JSON.stringify({
-        requestId: request.id
+        requestId: requestId
       })
     })
   })
