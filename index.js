@@ -67,15 +67,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
     console.log(requestCourse)
     console.log(requestHole)
   })
-    
-    // for (let i=0; i<courses.length; i++) {
-    //   let course = courses[i]
-    //   let courseId = course.id
-    //   let courseName = course.name 
-    //   let courseImage = course.imageUrl
-
-      //render golf course name and image below
-    // }
   
   } else {
     // Signed out
@@ -107,7 +98,7 @@ async function renderCourse(courseId, courseName, courseImage) {
   document.querySelector('.course').insertAdjacentHTML('beforeend', `
     <div class="course-${courseId} md:w-1/3 p-4">
       <image src="${courseImage}" class="w-full rounded-lg">
-      <a href="#" class="course-button block mx-auto font-bold text-xl bg-green-300 my-2 text-center rounded">${courseName}</a>
+      <a href="#" class="block mx-auto font-bold text-xl bg-green-300 my-2 text-center rounded">${courseName}</a>
     </div>
   `)
   //  document.querySelector(`.course-${courseId} .course-button`).addEventListener('click', async function(event) {
