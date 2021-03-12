@@ -226,7 +226,7 @@ async function renderRequest(requestId, requestorName, courseName, holeNumber, r
       <p class="text-lg">Hole ${holeNumber}</p>
       <p class="text-md">${requestDate}</p>
       <p class="text-md inline">Fulfilled?</p>
-      <a href = "#" class="fulfilled inline p-1 text-sm bg-green-400 text-white">😕</a>
+      <a href = "#" class="fulfilled inline p-1 bg-green-400 text-white">😕</a>
     </div>
   `)
 }
