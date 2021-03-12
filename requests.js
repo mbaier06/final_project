@@ -232,7 +232,7 @@ async function renderRequest(requestId, requestorName, courseName, holeNumber, r
 }
 
 async function fulfillRequest(requestId) {
-  document.querySelector(`request-${requestId} .fulfilled`).addEventListener('click', async function(event){
+  document.querySelector(`.request-${requestId} .fulfilled`).addEventListener('click', async function(event){
     event.preventDefault
     document.querySelector('.fulfilled').innerHTML = `
     <a href = "#" class="fulfilled inline p-1 text-sm bg-green-400 text-white">😄</a>
