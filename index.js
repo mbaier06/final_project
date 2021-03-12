@@ -16,7 +16,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     //Requests Link Webpage Navigation
     document.querySelector('.request-link').innerHTML = `
-      <a href="requests.html" id="requests" class="pl-6 inline-block ml-auto text-sm text-blue-500 underline p-4 text-left">Requests</a>
+      <a href="requests.html" id="requests" class="pl-6 inline-block ml-auto text-sm text-green-500 underline p-4 text-left">Requests</a>
     `
 
     //Sign out Button
@@ -81,8 +81,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Signed out
     console.log('signed out')
 
-    // Hide the form when signed-out
+    // Hide the form and app blurb when signed-out
     document.querySelector('form').classList.add('hidden')
+    document.querySelector('.blurb').classList.add('hidden')
 
     // Initializes FirebaseUI Auth
     let ui = new firebaseui.auth.AuthUI(firebase.auth())
