@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     
     
     document.querySelector('.home-link').innerHTML = `
-      <a href="index.html" id="index" class="pl-6 inline-block ml-auto text-sm text-blue-500 underline p-4 text-left">Home</a>
+      <a href="index.html" id="index" class="pl-6 inline-block ml-auto text-sm text-green-500 underline p-4 text-left">Home</a>
     `
 
     //Sign out Button
