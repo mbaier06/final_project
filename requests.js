@@ -32,25 +32,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
       console.log(trimCourseName)
       renderCourseName(trimCourseName, courseName)
     }
-    //Ensures filter button selected looks "active"
+    //Ensures filter button selected looks "active" via self-contained function. Also serves as parent function to rendering and deleting golfer request data
     filterActive()
-
-    //Fulfilling (aka deleting) a golfer request
-    // let requestResponse = await fetch(`/.netlify/functions/get_requests`)
-    // let requests = await requestResponse.json()
-    //   for (let i=0; i < requests.length; i++) {
-    //     let request = requests[i]
-    //     let requestId = request.id
-    //     document.querySelector(`.requests`).insertadjacentHTML('beforeend', `
-    //     <p class="text-md inline">Fulfilled?</p>
-    //     <a href = "#" class="fulfilled inline p-1 text-sm bg-green-500 text-white">✓</a>
-    //     `)
-    //     document.querySelector(`.request-${requestId} .fulfilled`).addEventListener('click', async function(event) {
-    //     event.preventDefault()
-    //     document.querySelector('.fulfilled').classList.add('opactiy-20')
-    //     await db.collection('requests').doc(requestId).delete()
-    //     })
-    //   }
   
   } else {
     // Signed out
@@ -263,22 +246,3 @@ async function fulfillRequest(requestId) {
     })
   })
 }
-
-
-
-//Fulfilling (aka deleting) a golfer request - would need to turn it into another fetch post
-    // let requestResponse = await fetch(`/.netlify/functions/get_requests`)
-    // let requests = await requestResponse.json()
-    //   for (let i=0; i < requests.length; i++) {
-    //     let request = requests[i]
-    //     let requestId = request.id 
-    //     document.querySelector(`.requests`).insertadjacentHTML('beforeend', `
-    //     <p class="text-md inline">Fulfilled?</p>
-    //     <a href = "#" class="fulfilled inline p-1 text-sm bg-green-400 text-white">✓</a>
-    //     `)
-    //     document.querySelector(`.request-${requestId} .fulfilled`).addEventListener('click', async function(event) {
-    //     event.preventDefault()
-    //     document.querySelector('.fulfilled').classList.add('opactiy-20')
-    //     await db.collection('requests').doc(requestId).delete()
-    //     })
-    //   }
