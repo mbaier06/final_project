@@ -220,22 +220,22 @@ async function renderCourseName(trimCourseName, courseName) {
 // render courses function to be called above
 async function renderRequest(requestId, requestorName, courseName, holeNumber, requestDate) {
   document.querySelector('.requests').insertAdjacentHTML('beforeend', `
-    <div class="request-${requestId} border-4 p-4 my-4 text-left">
+    <div class="border-4 p-4 my-4 text-left">
       <h2 class="text-2xl font-semibold py-1">${requestorName}</h2>
       <p class="text-lg font-semibold">${courseName}</p>
       <p class="text-lg">Hole ${holeNumber}</p>
       <p class="text-md">${requestDate}</p>
       <p class="text-md inline">Fulfilled?</p>
-      <a href = "#" class="fulfilled inline p-1 bg-green-400">😕</a>
+      <a href = "#" class="request-${requestId} inline p-1 bg-green-400">😕</a>
     </div>
   `)
 }
-
+// deletes golfer request from queue/firebase and changes emoji HTML
 async function fulfillRequest(requestId) {
-  document.querySelector(`.request-${requestId} .fulfilled`).addEventListener('click', async function(event){
+  document.querySelector(`.request-${requestId}`).addEventListener('click', async function(event){
     event.preventDefault
-    document.querySelector('.fulfilled').innerHTML = `
-    <a href = "#" class="fulfilled inline p-1 bg-green-400">😄</a>
+    document.querySelector(`.request-${requestId}`).innerHTML = `
+    😄
     `
     //make fetch POST request to backend to delete a fulfilled golfer request
     await fetch('/.netlify/functions/fulfill_request', {
