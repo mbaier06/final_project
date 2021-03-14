@@ -11,4 +11,4 @@ Scott Lowe
 Thomas Madsen
 
 Netlify URL: https://beforetheturn.netlify.app
-Mobile URL: 
+Mobile URL: https://play.nativescript.org/?template=play-js&id=aUJHxb&v=5
