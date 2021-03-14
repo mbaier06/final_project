@@ -10,5 +10,5 @@ Matt Baier
 Scott Lowe
 Thomas Madsen
 
-Netlify URL:
+Netlify URL: https://beforetheturn.netlify.app
 Mobile URL: 
