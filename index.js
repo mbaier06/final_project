@@ -48,6 +48,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let requestUser = user.displayName
     let requestCourse = document.querySelector('#course-name').value 
     let requestHole = document.querySelector('#hole-location').value
+    alert("Location has been submitted!"); 
 
     let response = await fetch('/.netlify/functions/create_request', {
       method: 'POST',
