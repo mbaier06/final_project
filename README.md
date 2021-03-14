@@ -9,4 +9,6 @@ Team Members:
 Matt Baier
 Scott Lowe
 Thomas Madsen
-TEST 
+
+Netlify URL:
+Mobile URL: 
