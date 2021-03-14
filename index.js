@@ -4,9 +4,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
   if (user) {
     // Signed in
     console.log('signed in')
-
-    //Hides Form function until user selects a course below -- not working properly
-    // document.querySelector('form').classList.add('hidden')
     
     //Ensure signed-in user is in Firestore Users collection
     db.collection('users').doc(user.uid).set({
@@ -101,30 +98,4 @@ async function renderCourse(courseId, courseName, courseImage) {
       <a href="#" class="block mx-auto font-bold text-xl bg-green-300 my-2 text-center rounded">${courseName}</a>
     </div>
   `)
-  //  document.querySelector(`.course-${courseId} .course-button`).addEventListener('click', async function(event) {
-  //   event.preventDefault()
-  //   console.log(`${courseName} was clicked!`)
-  //   let courseButtons = document.querySelectorAll(`.course-button`)
-  //   console.log(courseButtons.length)
-  //   // document.querySelectorAll(`.course-button`).remove('outline-black', 'bg-green-600')
-  //   for (j = 0; j < courseButtons.length; j++) {
-  //     let courseButton = courseButtons[j]
-  //     courseButton.classList.remove('outline-black', 'bg-green-600')
-  //   }
-  //   document.querySelector(`.course-${courseId} .course-button`).classList.add('outline-black', 'bg-green-600')
-  // })
-
-  // Renders form once user selects course
-  // renderForm(form)
 }
-
-//Render Form function AND taking selected course value into this function which can be passed to create_request
-// async function renderForm(form) {
-//   document.querySelector('form').classlist.remove('hidden')
-//   document.querySelector('form').insertAdjacentHTML('beforeend', `
-//   <h1 class = "text-2xl font-bold text-center">Which course and hole are you currently on?</h1>
-//       <input type="text" id="course-name" name="course-name" placeholder="Course Name" class="course-name block mx-auto my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-//       <input type="text" id="hole-location" name="hole-location" placeholder="Hole Number" class="hole-number block mx-auto my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-//       <button class="submit-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl block mx-auto">Submit</button>
-//   `
-// )}

@@ -61,7 +61,8 @@ async function renderCourseName(trimCourseName, courseName) {
     <div class="text-center"><a href="#" id="${trimCourseName}-filter" class="filter-button inline-block border-2 border-green-500 font-semibold rounded px-4 py-2">${courseName}</a>
   `)}
   
-//filter active function which also calls user request arrays via renderRequest function & filtering logic
+//filter active function which also calls user request arrays via renderRequest function & filtering logic AND deletes requests via fulfillRequest
+//Although MVP represents a universal, public view of golfer request data, a user-specific filter button renders requests from logged-in user
   async function filterActive() {
     let allFilters = document.querySelectorAll('.filter-button')
     let allRequestsFilter = document.querySelector('#all-filter')
@@ -217,7 +218,7 @@ async function renderCourseName(trimCourseName, courseName) {
     })
   }
  
-// render courses function to be called above
+// render courses function to be called above in filterActive parent function
 async function renderRequest(requestId, requestorName, courseName, holeNumber, requestDate) {
   document.querySelector('.requests').insertAdjacentHTML('beforeend', `
     <div class="border-4 p-4 my-4 text-left">
