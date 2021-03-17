@@ -91,7 +91,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 })
 
 
-// render courses function to be called above AND make course "active" once selecting course button
+// calls course name and image from back-end and renders on web page
 async function renderCourse(courseId, courseName, courseImage) {
   document.querySelector('.course').insertAdjacentHTML('beforeend', `
     <div class="course-${courseId} md:w-1/3 p-4">

@@ -62,7 +62,7 @@ async function renderCourseName(trimCourseName, courseName) {
   `)}
   
 //filter active function which also calls user request arrays via renderRequest function & filtering logic AND deletes requests via fulfillRequest
-//Although MVP represents a universal, public view of golfer request data, a user-specific filter button renders requests from logged-in user
+//Although MVP represents a universal, public view of golfer request data, a user-specific filter button renders requests from logged-in user to exhibit user-specific functionality
   async function filterActive() {
     let allFilters = document.querySelectorAll('.filter-button')
     let allRequestsFilter = document.querySelector('#all-filter')
