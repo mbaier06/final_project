@@ -8,7 +8,7 @@ const firebaseConfig = {
   storageBucket: "kiei-final-proj.appspot.com",
   messagingSenderId: "675527405123",
   appId: "1:675527405123:web:1257908b74715937cfeef6"
-} // replace
+} 
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
