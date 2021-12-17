@@ -43,16 +43,16 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     //Twilio SMS API Code
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = require('twilio')(accountSid, authToken);
+    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const client = require('twilio')(accountSid, authToken);
 
-client.messages
-  .create({
-     body: 'A golfer has submitted an order request',
-     from: '+18648637454',
-     to: '+12033139748'
-   })
-  .then(message => console.log(message.sid));
+    client.messages
+      .create({
+        body: 'A golfer has submitted an order request',
+        from: '+18648637454',
+        to: '+12033139748'
+      })
+      .then(message => console.log(message.sid));
 
     // Listen for form submit and create new request
   document.querySelector('form').addEventListener('submit', async function (event) {
