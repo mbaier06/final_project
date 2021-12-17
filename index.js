@@ -41,18 +41,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
       renderCourse(courseId, courseName, courseImage)
     }
 
-    //Twilio SMS API Code
-    const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    const authToken = process.env.TWILIO_AUTH_TOKEN;
-    const client = require('twilio')(accountSid, authToken);
-
-    client.messages
-      .create({
-        body: 'A golfer has submitted an order request',
-        from: '+18648637454',
-        to: '+12033139748'
-      })
-      .then(message => console.log(message.sid));
 
     // Listen for form submit and create new request
   document.querySelector('form').addEventListener('submit', async function (event) {
@@ -61,6 +49,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let requestCourse = document.querySelector('#course-name').value 
     let requestHole = document.querySelector('#hole-location').value
     alert("Location has been submitted!"); 
+
+    //Twilio SMS API Code to send message to cart operator
+    const accountSid = process.env.TWILIO_ACCOUNT_SID;
+    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const client = require('twilio')(accountSid, authToken);
+    
+    client.messages
+      .create({
+          body: 'A golfer has submitted an order request',
+          from: '+18648637454',
+          to: '+12033139748'
+        })
+      .then(message => console.log(message.sid));
 
     let response = await fetch('/.netlify/functions/create_request', {
       method: 'POST',
