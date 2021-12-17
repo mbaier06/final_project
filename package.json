@@ -5,6 +5,7 @@
   "scripts": {},
   "author": "",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "firebase": "^8.2.0",
     "twilio": "^3.72.0"
   }
