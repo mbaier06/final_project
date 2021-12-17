@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 firebase.auth().onAuthStateChanged(async function(user) {
   let db = firebase.firestore()
   if (user) {
@@ -43,8 +43,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     //Twilio Credentials
     //require('dotenv').config();
-    let dotenv = require('dotenv');
-    dotenv.config();
     let accountSid = process.env.TWILIO_ACCOUNT_SID;
     let authToken = process.env.TWILIO_AUTH_TOKEN;
     console.log('Your environment variable TWILIO_ACCOUNT_SID has the value: ', process.env.TWILIO_ACCOUNT_SID)
