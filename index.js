@@ -42,8 +42,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
     }
 
     //Twilio Credentials
-    const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const accountSid = TWILIO_ACCOUNT_SID;
+    const authToken = TWILIO_AUTH_TOKEN;
     const client = require('twilio')(accountSid, authToken);
 
     // Listen for form submit and create new request
