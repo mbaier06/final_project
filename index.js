@@ -51,14 +51,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
     alert("Location has been submitted!"); 
 
     //Twilio SMS API Code to send message to cart operator
-    require('dotenv').config();
-    console.log('Your environment variable TWILIO_ACCOUNT_SID has the value: ', process.env.TWILIO_ACCOUNT_SID);
-
-    require('dotenv').config();
-    console.log('Your environment variable TWILIO_AUTH_TOKEN has the value: ', process.env.TWILIO_AUTH_TOKEN);
     
-    const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const accountSid = AC09fd9693c3ea973c26dddf0c1f313c0f;
+    const authToken = bb8d3f00f20881e89c7248177ddb72d3;
     const client = require('twilio')(accountSid, authToken);
     
     client.messages
