@@ -55,7 +55,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     console.log('Your environment variable TWILIO_ACCOUNT_SID has the value: ', process.env.TWILIO_ACCOUNT_SID);
 
     require('dotenv').config();
-    console.log('Your environment variable TWILIO_ACCOUNT_SID has the value: ', process.env.TWILIO_AUTH_TOKEN);
+    console.log('Your environment variable TWILIO_AUTH_TOKEN has the value: ', process.env.TWILIO_AUTH_TOKEN);
     
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
