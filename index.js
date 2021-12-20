@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 firebase.auth().onAuthStateChanged(async function(user) {
   let db = firebase.firestore()
   if (user) {
@@ -41,13 +41,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
       renderCourse(courseId, courseName, courseImage)
     }
 
-    //Twilio Credentials
-    //require('dotenv').config();
-    let accountSid = process.env.TWILIO_ACCOUNT_SID;
-    let authToken = process.env.TWILIO_AUTH_TOKEN;
-    console.log('Your environment variable TWILIO_ACCOUNT_SID has the value: ', process.env.TWILIO_ACCOUNT_SID)
-    let client = require('twilio')(accountSid, authToken);
-
     // Listen for form submit and create new request
   document.querySelector('form').addEventListener('submit', async function (event) {
     event.preventDefault()
@@ -70,13 +63,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
     console.log(requestCourse)
     console.log(requestHole)
 
-    client.messages
-      .create({
-         body: 'A golfer has submitted an order',
-         from: '+18648637454',
-         to: '+12033139748'
-       })
-      .then(message => console.log(message.sid));
   })
   
   } else {
