@@ -31,6 +31,7 @@
         <h1 class = "text-2xl font-semibold text-center">Which course and hole are you currently on?</h1>
         <input type="text" id="course-name" name="course-name" placeholder="Course Name" class="course-name block mx-auto my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
         <input type="text" id="hole-location" name="hole-location" placeholder="Hole Number" class="hole-number block mx-auto my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+        <script src="bundle.js"></script>
         <button class="submit-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl block mx-auto">Submit</button>
       </form>
  
@@ -55,7 +56,8 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script>
-  <script src="index.js"></script>
+  <script src="https://media.twiliocdn.com/sdk/js/chat/v5.0/twilio-chat.min.js"></script>
+  <script data-main="index.js" src="require.js"></script>
 </body>
 
 </html>
